@@ -52,6 +52,7 @@ public class Loginpage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblpassworderror = new javax.swing.JLabel();
         lblcpassworderror = new javax.swing.JLabel();
+        lblcnumber = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 0, 102));
@@ -138,9 +139,10 @@ public class Loginpage extends javax.swing.JFrame {
         Cancel.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         Cancel.setText("CANCEL");
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setForeground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(0, 204, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("         SIGN UP");
@@ -162,6 +164,7 @@ public class Loginpage extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        lblpassworderror.setBackground(new java.awt.Color(255, 51, 51));
         lblpassworderror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblpassworderror.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -192,10 +195,15 @@ public class Loginpage extends javax.swing.JFrame {
                             .addComponent(PasswordField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Lastname, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Firstname, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblcpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblcpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(lblcnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(Signup, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +251,9 @@ public class Loginpage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Contactno, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Contactno, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblcnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Signup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,13 +349,25 @@ return false;
             pass=PasswordField.getText();
             if(pass.lenght()>8)
             {
-               lblpasworderror.setText("!");
+               lblpasworderror.setText("");
             }
             else
             {
                 lblpassworderror.setText("Enter 8 digit password!");
             }
         }
+        void mobileCheck(){
+            contactno=Contactno.getText();
+            if (Contactno.length()==10);
+            {
+                
+            }
+            else{
+                   lblcnumber.setText("Enter 10 digit Contact number!");
+                            
+                    }
+        }
+               
     /**
      * @param args the command line arguments
      */
@@ -391,6 +413,7 @@ return false;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblcnumber;
     private javax.swing.JLabel lblcpassworderror;
     private javax.swing.JLabel lblpassworderror;
     // End of variables declaration//GEN-END:variables
