@@ -63,8 +63,8 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="lblcnumber" min="-2" pref="206" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="lblcnumbererror" min="-2" pref="228" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -132,7 +132,7 @@
                   <Component id="jTextField4" min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="Contactno" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="lblcnumber" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="lblcnumbererror" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
@@ -223,6 +223,9 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LastnameActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Contactno">
       <Properties>
@@ -232,6 +235,9 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactnoActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ContactnoKeyPressed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ContactnoKeyReleased"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ContactnoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="PasswordField">
@@ -240,9 +246,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="Confirmpass">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
-      </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="dobchooser">
     </Component>
@@ -349,7 +352,18 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblcnumber">
+    <Component class="javax.swing.JLabel" name="lblcnumbererror">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

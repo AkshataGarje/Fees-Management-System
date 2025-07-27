@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author aksha
  */
+
 public class Loginpage extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Loginpage.class.getName());
@@ -52,7 +53,7 @@ public class Loginpage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblpassworderror = new javax.swing.JLabel();
         lblcpassworderror = new javax.swing.JLabel();
-        lblcnumber = new javax.swing.JLabel();
+        lblcnumbererror = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 0, 102));
@@ -103,11 +104,27 @@ public class Loginpage extends javax.swing.JFrame {
         });
 
         Lastname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Lastname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LastnameActionPerformed(evt);
+            }
+        });
 
         Contactno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Contactno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContactnoActionPerformed(evt);
+            }
+        });
+        Contactno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ContactnoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ContactnoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ContactnoKeyTyped(evt);
             }
         });
 
@@ -116,8 +133,6 @@ public class Loginpage extends javax.swing.JFrame {
                 PasswordFieldActionPerformed(evt);
             }
         });
-
-        Confirmpass.setText("jPasswordField2");
 
         Signup.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         Signup.setForeground(new java.awt.Color(51, 51, 0));
@@ -171,6 +186,10 @@ public class Loginpage extends javax.swing.JFrame {
         lblcpassworderror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcpassworderror.setForeground(new java.awt.Color(204, 0, 0));
 
+        lblcnumbererror.setBackground(new java.awt.Color(255, 0, 0));
+        lblcnumbererror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblcnumbererror.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -202,8 +221,8 @@ public class Loginpage extends javax.swing.JFrame {
                                     .addComponent(lblpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblcpassworderror, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(lblcnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(22, 22, 22)
+                                .addComponent(lblcnumbererror, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(Signup, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +272,7 @@ public class Loginpage extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Contactno, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblcnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblcnumbererror, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Signup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,10 +320,31 @@ public class Loginpage extends javax.swing.JFrame {
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void LastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LastnameActionPerformed
+
+    private void ContactnoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContactnoKeyPressed
+        // TODO add your handling code here:
+        mobileCheck();
+    }//GEN-LAST:event_ContactnoKeyPressed
+
+    private void ContactnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContactnoKeyReleased
+        // TODO add your handling code here:
+         mobileCheck();
+    }//GEN-LAST:event_ContactnoKeyReleased
+
+    private void ContactnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContactnoKeyTyped
+        // TODO add your handling code here:
+         mobileCheck();
+    }//GEN-LAST:event_ContactnoKeyTyped
 String fname,lname,pass,cpass,contactno;
 Date dob;
         boolean validation()
         {
+            passwordCheck();
+            mobileCheck();
 fname=Firstname.getText();
 lname=Lastname.getText();
 pass=PasswordField.getText();
@@ -345,11 +385,12 @@ return false;
         }
       return true;
         }
-        void passwordcheck(){
+        void passwordCheck(){
             pass=PasswordField.getText();
-            if(pass.lenght()>8)
+            if(pass.length() >= 8)
+
             {
-               lblpasworderror.setText("");
+               lblpassworderror.setText("");
             }
             else
             {
@@ -358,12 +399,13 @@ return false;
         }
         void mobileCheck(){
             contactno=Contactno.getText();
-            if (Contactno.length()==10);
+            if (contactno.length()==10)
             {
-                
+                lblcnumbererror.setText("");
             }
-            else{
-                   lblcnumber.setText("Enter 10 digit Contact number!");
+            else
+            {
+                   lblcnumbererror.setText("Enter 10 digit Contact number!");
                             
                     }
         }
@@ -413,7 +455,7 @@ return false;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JLabel lblcnumber;
+    private javax.swing.JLabel lblcnumbererror;
     private javax.swing.JLabel lblcpassworderror;
     private javax.swing.JLabel lblpassworderror;
     // End of variables declaration//GEN-END:variables
